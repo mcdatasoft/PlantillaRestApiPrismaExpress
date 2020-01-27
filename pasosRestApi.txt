@@ -1,0 +1,5 @@
+1. npm install --save express body-parser // Instalamos express para generar servicios api rest
+2. npm install @types/express // para typescript se requiere tener los typos para express.
+3. codificar un rest api express en el fichero ./src/index.ts
+4. npm start // aqui iniciamos el servidor express rest api
+5. ir al web browser y colocar   http://localhost:3000/clientes/listado   mostrara los clientes en JSON.

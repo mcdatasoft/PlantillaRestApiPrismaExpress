@@ -1,4 +1,4 @@
-/*
+/*1
 console.log("Try npm run check/fix!");
 
 const longString =
@@ -22,7 +22,7 @@ export function doSomeStuff(
 }
 */
 
-/*
+/*2
 class Student {
   fullName: string;
   constructor(public firstName: string, public middleInitial: string, public lastName: string) {
@@ -43,7 +43,8 @@ let user = new Student("Catherine", "H.", "de Cuadros");
 
 console.log(greeter(user));
 */
-
+//3 consultando sqlite 
+/*
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
   async function main() {
@@ -55,6 +56,32 @@ const prisma = new PrismaClient()
           }
     })
     console.log(users)
-  }
-  
+  }  
   main()
+  */
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+import * as express from 'express'
+import * as bodyParser from 'body-parser'
+
+const app = express()
+
+app.use(bodyParser.json())
+
+app.get(`/clientes/listado`, async (req, res) => {
+  //const publishedPosts = await prisma.posts({ where: { published: true } })
+
+  const users = await prisma.clientes.findMany({
+    select: {
+        nombre: true,
+        apellido: true
+      }
+})
+
+  res.json(users)
+})
+
+app.listen(3000, () =>
+  console.log('Server is running on http://localhost:3000'),
+)
